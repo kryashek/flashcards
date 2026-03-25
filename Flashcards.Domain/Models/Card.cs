@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Flashcards.Domain.Models
 {
-    internal class Card
+    public class Card
     {
         public int Id { get; set; }
         public string Front { get; set; }

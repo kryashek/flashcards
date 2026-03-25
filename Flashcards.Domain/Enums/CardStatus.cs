@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flashcards.Domain.Enums
 {
-    internal enum CardStatus
+    public enum CardStatus
     {
         New,
         Learning,

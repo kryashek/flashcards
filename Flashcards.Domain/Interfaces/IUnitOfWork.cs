@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flashcards.Domain.Interfaces
 {
-    internal interface IUnitOfWork
+    public interface IUnitOfWork
     {
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
