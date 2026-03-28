@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Flashcards.Application.Feautures.Decks.Commands
 {
-    internal class DeleteDeckCommand
+    public class DeleteDeckCommand
     {
+        public int Id { get; set; }
     }
 }

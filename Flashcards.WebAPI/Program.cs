@@ -28,6 +28,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Application handlers (реализуют ICommandHandler<,>)
 builder.Services.AddScoped<ICommandHandler<CreateDeckCommand, DeckDTO>, CreateDeckHandler>();
+builder.Services.AddScoped<ICommandHandler<UpdateDeckCommand, DeckDTO>, UpdateDeckHandler>();
 
 // Можно добавить и другие обработчики по мере необходимости
 

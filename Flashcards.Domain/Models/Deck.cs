@@ -30,6 +30,11 @@
             Name = newName;
         }
 
+        public void UpdateTags(List<string> newTags)
+        {
+            Tags = newTags ?? [];
+        }
+
         public void AddTag(string tag)
         {
             Tags.Add(tag);
