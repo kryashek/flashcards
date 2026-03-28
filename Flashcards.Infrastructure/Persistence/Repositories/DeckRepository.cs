@@ -1,47 +1,46 @@
 ﻿using Flashcards.Domain.Interfaces;
 using Flashcards.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Flashcards.Infrastructure.Persistence.Repositories
 {
     public class DeckRepository : IDeckRepository
     {
-        private readonly List<Deck> _decks = [];
-        private int _nextId = 1;
+        private readonly AppDbContext _context;
 
-        public Task<Deck?> GetByIdAsync(int id,  CancellationToken cancellationToken = default)
+        public DeckRepository(AppDbContext context)
         {
-            var deck = _decks.FirstOrDefault(d => d.Id == id);
-            return Task.FromResult(deck);
+            _context = context;
         }
 
-        public Task<IEnumerable<Deck>> GetByUserIdAsync(int userId, CancellationToken cancellationToken = default)
+        public async Task<Deck?> GetByIdAsync(int id,  CancellationToken cancellationToken = default)
         {
-            var userDecks = _decks.Where(d => d.UserId == userId);
-            return Task.FromResult(userDecks);
+            return await _context.Decks
+                //.Include(d => d.Cards)
+                .FirstOrDefaultAsync(d => d.Id == id, cancellationToken);
+        }
+
+        public async Task<IEnumerable<Deck>> GetByUserIdAsync(int userId, CancellationToken cancellationToken = default)
+        {
+            return await _context.Decks
+                .Where(d => d.UserId == userId)
+                .OrderByDescending(d => d.CreatedAt)
+                .ToListAsync(cancellationToken);
         }
 
         public void Add(Deck deck)
         {
-            var id = _nextId++;
-
-            // Используем рефлексию для установки Id (в реальном проекте лучше использовать фабрику или EF Core)
-            typeof(Deck).GetProperty("Id")?.SetValue(deck, id);
-            _decks.Add(deck);
+            _context.Decks.Add(deck);
         }
 
         public void Update(Deck deck)
         {
-            var existing = _decks.FirstOrDefault(d => d.Id == deck.Id);
-            if (existing != null)
-            {
-                _decks.Remove(existing);
-                _decks.Add(deck);
-            }
+            _context.Entry(deck).State = EntityState.Modified;
         }
 
         public void Remove(Deck deck)
         {
-            _decks.Remove(deck);
+            _context.Decks.Remove(deck);
         }
     }
 }

@@ -1,16 +1,19 @@
 ﻿using Flashcards.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Flashcards.Infrastructure.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        private readonly AppDbContext _context; 
+
+        public UnitOfWork(AppDbContext context)
         {
-            // В in-memory нет реальной транзакции, просто возвращаем успех
-            return Task.FromResult(1);
+            _context = context;
+        }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            return await _context.SaveChangesAsync(cancellationToken);
         }
     }
 }
