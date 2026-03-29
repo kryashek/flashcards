@@ -5,6 +5,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Flashcards.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
@@ -112,6 +114,28 @@ namespace Flashcards.Infrastructure.Persistence.Migrations
                         principalTable: "Statuses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Ratings",
+                columns: new[] { "Id", "Value" },
+                values: new object[,]
+                {
+                    { 1, "Again" },
+                    { 2, "Hard" },
+                    { 3, "Good" },
+                    { 4, "Easy" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Statuses",
+                columns: new[] { "Id", "Value" },
+                values: new object[,]
+                {
+                    { 1, "New" },
+                    { 2, "Learning" },
+                    { 3, "Review" },
+                    { 4, "Mature" }
                 });
 
             migrationBuilder.CreateIndex(

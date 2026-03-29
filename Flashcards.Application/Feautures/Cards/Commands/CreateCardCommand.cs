@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Flashcards.Application.Feautures.Cards.Commands
+﻿namespace Flashcards.Application.Feautures.Cards.Commands
 {
-    internal class CreateCardCommand
+    public class CreateCardCommand
     {
+        public int DeckId { get; set; }
+        public string Front { get; set; } = string.Empty;
+        public string Back { get; set; } = string.Empty;
     }
 }

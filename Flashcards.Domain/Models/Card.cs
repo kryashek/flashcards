@@ -7,14 +7,14 @@ namespace Flashcards.Domain.Models
 {
     public class Card
     {
-        public int Id { get; set; }
-        public string Front { get; set; } = string.Empty;
-        public string Back { get; set; } = string.Empty;
-        public int DeckId { get; set; }
-        public int StatusId { get; set; }
-        public int? LastRatingId { get; set; }
-        public DateTime? LastReviewDate { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public int Id { get; private set; }
+        public string Front { get; private set; } = string.Empty;
+        public string Back { get; private set; } = string.Empty;
+        public int DeckId { get; private set; }
+        public int StatusId { get; private set; }
+        public int? LastRatingId { get; private set; }
+        public DateTime? LastReviewDate { get; private set; }
+        public DateTime CreatedAt { get; private set; }
 
         public Deck Deck { get; set; } = null!;
         public Status Status { get; set; } = null!;
@@ -37,6 +37,18 @@ namespace Flashcards.Domain.Models
             StatusId = newStatusId;
             LastRatingId = newRatingId;
             LastReviewDate = DateTime.Now.ToUniversalTime();
+        }
+
+        public string GetStatusName()
+        {
+            return StatusId switch
+            {
+                1 => "New",
+                2 => "Learning",
+                3 => "Review",
+                4 => "Mature",
+                _ => "Unknown"
+            };
         }
     }
 }

@@ -62,12 +62,28 @@ namespace Flashcards.Infrastructure.Persistence
             {
                 entity.HasKey(s => s.Id);
                 entity.Property(s => s.Value).IsRequired().HasMaxLength(50);
+
+                // Начальные данные
+                entity.HasData(
+                    new Status { Id = 1, Value = "New" },
+                    new Status { Id = 2, Value = "Learning" },
+                    new Status { Id = 3, Value = "Review" },
+                    new Status { Id = 4, Value = "Mature" }
+                );
             });
 
             modelBuilder.Entity<Rating>(entity =>
             {
                 entity.HasKey(r => r.Id);
                 entity.Property(r => r.Value).IsRequired().HasMaxLength(50);
+
+                // Начальные данные
+                entity.HasData(
+                    new Rating { Id = 1, Value = "Again" },
+                    new Rating { Id = 2, Value = "Hard" },
+                    new Rating { Id = 3, Value = "Good" },
+                    new Rating { Id = 4, Value = "Easy" }
+                );
             });
         }
     }

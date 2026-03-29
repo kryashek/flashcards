@@ -13,7 +13,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Flashcards.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260328165132_InitialCreate")]
+    [Migration("20260329130725_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -114,6 +114,28 @@ namespace Flashcards.Infrastructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ratings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Value = "Again"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Value = "Hard"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Value = "Good"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Value = "Easy"
+                        });
                 });
 
             modelBuilder.Entity("Flashcards.Domain.Models.Status", b =>
@@ -132,6 +154,28 @@ namespace Flashcards.Infrastructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Statuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Value = "New"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Value = "Learning"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Value = "Review"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Value = "Mature"
+                        });
                 });
 
             modelBuilder.Entity("Flashcards.Domain.Models.User", b =>

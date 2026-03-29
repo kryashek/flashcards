@@ -9,8 +9,8 @@ namespace Flashcards.Domain.Interfaces
     {
         Task<Card?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
         Task<IEnumerable<Card>> GetByDeckIdAsync(int deckId, CancellationToken cancellationToken = default);
-        void Add(Card deck);
-        void Update(Card deck);
-        void Remove(Card deck);
+        void Add(Card card);
+        void Update(Card card);
+        void Remove(Card card);
     }
 }
