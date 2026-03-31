@@ -34,13 +34,10 @@ namespace Flashcards.Application.Feautures.Cards.Handlers
             _cardRepository.Add(card);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return new CardDTO
+            return new CardDTO(card.Id, card.DeckId, card.CreatedAt)
             {
-                Id = card.Id,
                 Front = card.Front,
                 Back = card.Back,
-                DeckId = card.DeckId,
-                CreatedAt = card.CreatedAt,
                 Status = card.GetStatusName()
             };
         }

@@ -36,13 +36,7 @@ namespace Flashcards.Application.Feautures.Decks.Handlers
             _deckRepository.Update(deck);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return new DeckDTO
-            {
-                Id = deck.Id,
-                Name = deck.Name,
-                Tags = deck.Tags,
-                CreatedAt = deck.CreatedAt
-            };
+            return new DeckDTO(deck.Id, deck.Name, deck.Tags, deck.CreatedAt);
         }
     }
 }

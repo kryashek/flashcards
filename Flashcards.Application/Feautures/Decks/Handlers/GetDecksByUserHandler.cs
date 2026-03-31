@@ -20,13 +20,7 @@ namespace Flashcards.Application.Feautures.Decks.Handlers
         public async Task<List<DeckDTO>> Handle(GetDecksByUserQuery query, CancellationToken cancellationToken)
         {
             var decks = await _deckRepository.GetByUserIdAsync(query.UserId, cancellationToken);
-            return [.. decks.Select(d => new DeckDTO 
-            { 
-                Id = d.Id,
-                Name = d.Name,
-                Tags = d.Tags,
-                CreatedAt = d.CreatedAt
-            })];
+            return [.. decks.Select(d => new DeckDTO(d.Id, d.Name, d.Tags, d.CreatedAt))];
         }
     }
 }
