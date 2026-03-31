@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Feautures\ImportExport\Commands\" />
+    <Folder Include="Feautures\ImportExport\Handlers\" />
+    <Folder Include="Feautures\ImportExport\Queries\" />
+    <Folder Include="Feautures\Statistics\DTOs\" />
+    <Folder Include="Feautures\Statistics\Handlers\" />
+    <Folder Include="Feautures\Statistics\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Flashcards.Domain\Flashcards.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

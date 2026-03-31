@@ -1,7 +1,10 @@
 <Solution>
-  <Project Path="Application/Application.csproj" />
-  <Project Path="Domain/Domain.csproj" />
-  <Project Path="Infrastructure/Infrastructure.csproj" />
-  <Project Path="Tests/Tests.csproj" />
-  <Project Path="WebAPI/WebAPI.csproj" />
+  <Folder Name="/Элементы решения/">
+    <File Path="docker-compose.yml" />
+  </Folder>
+  <Project Path="Flashcards.Application/Flashcards.Application.csproj" Id="140fc5a8-63a8-4778-8668-c25a4ea66985" />
+  <Project Path="Flashcards.Domain/Flashcards.Domain.csproj" Id="a8b15a18-d538-4a63-96a9-5e3cdbb171c4" />
+  <Project Path="Flashcards.Infrastructure/Flashcards.Infrastructure.csproj" Id="26d2fa58-a33f-4a37-8521-2d502919769f" />
+  <Project Path="Flashcards.Tests/Flashcards.Tests.csproj" Id="d1a93a73-9979-400b-ad73-e8852beebe4e" />
+  <Project Path="Flashcards.WebAPI/Flashcards.WebAPI.csproj" Id="84fe645b-07a6-4ff1-83eb-9cbe05a65966" />
 </Solution>
