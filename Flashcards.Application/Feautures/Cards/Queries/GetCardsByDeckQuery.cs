@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Flashcards.Application.Feautures.Cards.Queries
+﻿namespace Flashcards.Application.Feautures.Cards.Queries
 {
-    internal class GetCardsByDeckQuery
+    public class GetCardsByDeckQuery
     {
+        public int DeckId { get; set; }
     }
 }

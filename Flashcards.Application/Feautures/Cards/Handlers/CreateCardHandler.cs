@@ -4,9 +4,6 @@ using Flashcards.Application.DTOs;
 using Flashcards.Application.Feautures.Cards.Commands;
 using Flashcards.Domain.Interfaces;
 using Flashcards.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Flashcards.Application.Feautures.Cards.Handlers
 {
@@ -25,9 +22,8 @@ namespace Flashcards.Application.Feautures.Cards.Handlers
 
         public async Task<CardDTO> Handle(CreateCardCommand command, CancellationToken cancellationToken)
         {
-            var deck = await _deckRepository.GetByIdAsync(command.DeckId, cancellationToken);
-            if (deck == null)
-                throw new NotFoundException($"Deck with ID {command.DeckId} not found");
+            var deck = await _deckRepository.GetByIdAsync(command.DeckId, cancellationToken)
+                ?? throw new NotFoundException($"Deck with ID {command.DeckId} not found");
 
             var card = new Card(command.Front, command.Back, command.DeckId);
 

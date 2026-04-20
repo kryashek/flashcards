@@ -23,10 +23,8 @@ namespace Flashcards.Application.Feautures.Decks.Handlers
 
         public async Task<bool> Handle(DeleteDeckCommand command, CancellationToken cancellationToken)
         {
-            var deck = await _deckRepository.GetByIdAsync(command.Id, cancellationToken);
-
-            if (deck == null)
-                throw new NotFoundException($"Deck with ID {command.Id} not found");
+            var deck = await _deckRepository.GetByIdAsync(command.Id, cancellationToken)
+                ?? throw new NotFoundException($"Deck with ID {command.Id} not found");
 
             _deckRepository.Remove(deck);
             await _unitOfWork.SaveChangesAsync(cancellationToken);

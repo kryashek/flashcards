@@ -1,7 +1,11 @@
 using Flashcards.Application.Common.Interfaces;
 using Flashcards.Application.DTOs;
+using Flashcards.Application.Feautures.Cards.Commands;
+using Flashcards.Application.Feautures.Cards.Handlers;
+using Flashcards.Application.Feautures.Cards.Queries;
 using Flashcards.Application.Feautures.Decks.Commands;
 using Flashcards.Application.Feautures.Decks.Handlers;
+using Flashcards.Application.Feautures.Decks.Queries;
 using Flashcards.Domain.Interfaces;
 using Flashcards.Infrastructure.Persistence;
 using Flashcards.Infrastructure.Persistence.Repositories;
@@ -29,6 +33,16 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Application handlers (реализуют ICommandHandler<,>)
 builder.Services.AddScoped<ICommandHandler<CreateDeckCommand, DeckDTO>, CreateDeckHandler>();
 builder.Services.AddScoped<ICommandHandler<UpdateDeckCommand, DeckDTO>, UpdateDeckHandler>();
+builder.Services.AddScoped<ICommandHandler<DeleteDeckCommand, bool>, DeleteDeckHandler>();
+builder.Services.AddScoped<IQueryHandler<GetDeckByIdQuery, DeckDTO>, GetDeckByIdHandler>();
+builder.Services.AddScoped<IQueryHandler<GetDecksByUserQuery, List<DeckDTO>>, GetDecksByUserHandler>();
+
+builder.Services.AddScoped<ICommandHandler<CreateCardCommand, CardDTO>, CreateCardHandler>();
+builder.Services.AddScoped<ICommandHandler<UpdateCardCommand, CardDTO>, UpdateCardHandler>();
+builder.Services.AddScoped<ICommandHandler<DeleteCardCommand, bool>, DeleteCardHandler>();
+builder.Services.AddScoped<IQueryHandler<GetCardsByDeckQuery, List<CardDTO>>, GetCardsByDeckHandler>();
+builder.Services.AddScoped<IQueryHandler<GetCardByIdQuery, CardDTO>, GetCardByIdHandler>();
+
 
 // Можно добавить и другие обработчики по мере необходимости
 
