@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Flashcards.Application.Feautures.Decks.Queries
 {
-    internal class GetDeckByIdQuery
+    public class GetDeckByIdQuery
     {
+        public int DeckId { get; set; }
     }
 }

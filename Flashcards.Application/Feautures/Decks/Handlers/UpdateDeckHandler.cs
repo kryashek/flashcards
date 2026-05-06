@@ -23,12 +23,8 @@ namespace Flashcards.Application.Feautures.Decks.Handlers
 
         public async Task<DeckDTO> Handle(UpdateDeckCommand command, CancellationToken cancellationToken)
         {
-            var deck = await _deckRepository.GetByIdAsync(command.Id, cancellationToken);
-
-            if (deck == null)
-            {
-                throw new NotFoundException($"Deck with ID {command.Id} not found");
-            }
+            var deck = await _deckRepository.GetByIdAsync(command.Id, cancellationToken)
+                ?? throw new NotFoundException($"Deck with ID {command.Id} not found");
 
             deck.UpdateName(command.Name);
             deck.UpdateTags(command.Tags);

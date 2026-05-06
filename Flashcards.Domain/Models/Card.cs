@@ -32,6 +32,12 @@ namespace Flashcards.Domain.Models
 
         private Card() { }
 
+        public void UpdateFrontAndBack(string front, string back)
+        {
+            Front = front;
+            Back = back;
+        }
+
         public void UpdateStatus(int newStatusId, int? newRatingId)
         {
             StatusId = newStatusId;

@@ -16,7 +16,6 @@ namespace Flashcards.Infrastructure.Persistence.Repositories
         public async Task<Deck?> GetByIdAsync(int id,  CancellationToken cancellationToken = default)
         {
             return await _context.Decks
-                //.Include(d => d.Cards)
                 .FirstOrDefaultAsync(d => d.Id == id, cancellationToken);
         }
 
