@@ -27,3 +27,11 @@ docker-compose.override.yml  # если не хотите коммитить л�
 # Environment variables
 .env
 *.secrets.json
+
+# Local learning workspace and Codex mentor skill
+/docs/learning/
+/.agents/skills/flashcards-learning-mentor/
+
+# Local learning workspace and Codex mentor skill
+/docs/learning/
+/.agents/skills/flashcards-learning-mentor/
