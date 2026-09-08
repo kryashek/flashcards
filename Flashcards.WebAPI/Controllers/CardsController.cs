@@ -14,14 +14,14 @@ namespace Flashcards.WebAPI.Controllers
         private readonly ICommandHandler<DeleteCardCommand, bool> _deleteCardHandler;
         private readonly ICommandHandler<UpdateCardCommand, CardDTO> _updateCardHandler;
         private readonly ICommandHandler<GetCardsByDeckQuery, List<CardDTO>> _getCardsByDeckHandler;
-        private readonly ICommandHandler<GetCardByIdQuery, CardDTO> _getCardByIdHandler;
+        private readonly IQueryHandler<GetCardByIdQuery, CardDTO> _getCardByIdHandler;
 
         public CardsController(
             ICommandHandler<CreateCardCommand, CardDTO> createCardHandler,
             ICommandHandler<DeleteCardCommand, bool> deleteCardHandler,
             ICommandHandler<UpdateCardCommand, CardDTO> updateCardHandler,
             ICommandHandler<GetCardsByDeckQuery, List<CardDTO>> getCardsByDeckHandler,
-            ICommandHandler<GetCardByIdQuery, CardDTO> getCardByIdHandler)
+            IQueryHandler<GetCardByIdQuery, CardDTO> getCardByIdHandler)
         {
             _createCardHandler = createCardHandler;
             _deleteCardHandler = deleteCardHandler;
