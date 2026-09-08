@@ -1,16 +1,4 @@
-﻿using Flashcards.Application.Common.Interfaces;
-using Flashcards.Application.DTOs;
-using Flashcards.Application.Feautures.Decks.Commands;
-using Flashcards.Application.Feautures.Decks.Handlers;
-using Flashcards.Domain.Interfaces;
-using Flashcards.Infrastructure.Persistence;
-using Flashcards.Infrastructure.Persistence.Repositories;
-using Flashcards.Infrastructure.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Flashcards.Infrastructure
+﻿namespace Flashcards.Infrastructure
 {
     public static class DependencyInjection
     {
