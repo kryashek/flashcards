@@ -9,16 +9,20 @@ using Flashcards.Application.Feautures.Decks.Queries;
 using Flashcards.Domain.Interfaces;
 using Flashcards.Infrastructure.Persistence;
 using Flashcards.Infrastructure.Persistence.Repositories;
+using Flashcards.WebAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Flashcards.WebAPI
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddServices(this IServiceCollection services, string connectionString)
+        public static IServiceCollection AddServices(this IServiceCollection services, string? connectionString)
         {
             // Add services to the container.
-            services.AddControllers().AddControllersAsServices();
+            services.AddControllers()
+                .AddApplicationPart(typeof(CardsController).Assembly)
+                .AddApplicationPart(typeof(DecksController).Assembly)
+                .AddControllersAsServices();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
 
